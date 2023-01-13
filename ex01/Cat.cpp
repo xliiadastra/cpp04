@@ -28,10 +28,11 @@ Cat&    Cat::operator=(const Cat& src)
     brain = new Brain(*src.brain);
     return (*this);
 }
+
 Cat::~Cat()
 {
     std::cout << "[Cat] Destructor called." << std::endl;
-    delete this;
+    delete this->brain;
 }
 
 void    Cat::makeSound(void) const

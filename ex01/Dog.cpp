@@ -33,7 +33,7 @@ Dog&    Dog::operator=(const Dog& src)
 Dog::~Dog()
 {
     std::cout << "[Dog] Destructor called." << std::endl;
-    delete this;
+    delete this->brain;
 }
 
 void    Dog::makeSound(void) const
@@ -43,7 +43,7 @@ void    Dog::makeSound(void) const
 
 Brain*  Dog::getBrain()
 {
-    return (brain);
+    return (this->brain);
 }
 
 void    Dog::setBrain(std::string idea, unsigned int n)
