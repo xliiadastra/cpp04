@@ -22,7 +22,8 @@ Cat&    Cat::operator=(const Cat& src)
             delete this->brain;
         this->type = src.type;
         this->brain = new Brain();
-//        this->brain->setIdeas();
+        for (int i = 0; i < 100; i++)
+            this->brain->setIdeas(src.brain->getIdeas(i), i);
     }
     brain = new Brain(*src.brain);
     return (*this);
@@ -56,4 +57,11 @@ void    Cat::setBrain(std::string idea, unsigned int n)
 
 void    Cat::printBrain()
 {
+    std::cout << "   * Print Brain Start *   " << std::endl;
+    for (int i = 0; i < 100; i++)
+    {
+        if (brain->getIdeas(i) != "")
+            std::cout << brain->getIdeas(i) << std::endl;
+    }
+    std::cout << "   * Print Brain End *   " << std::endl;
 }

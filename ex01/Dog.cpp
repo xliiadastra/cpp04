@@ -18,9 +18,18 @@ Dog&    Dog::operator=(const Dog& src)
 {
     std::cout << "[Dog] Copy assignment operator called." << std::endl;
     if (this != &src)
+    {
+        if (this->brain)
+            delete this->brain;
         this->type = src.type;
+        this->brain = new Brain();
+        for (int i = 0; i < 100; i++)
+            this->brain->setIdeas(src.brain->getIdeas(i), i);
+    }
+    brain = new Brain(*src.brain);
     return (*this);
 }
+
 Dog::~Dog()
 {
     std::cout << "[Dog] Destructor called." << std::endl;
@@ -51,5 +60,11 @@ void    Dog::setBrain(std::string idea, unsigned int n)
 
 void    Dog::printBrain()
 {
-    
+    std::cout << "   * Print Brain Start *   " << std::endl;
+    for (int i = 0; i < 100; i++)
+    {
+        if (brain->getIdeas(i) != "")
+            std::cout << brain->getIdeas(i) << std::endl;
+    }
+    std::cout << "   * Print Brain End *   " << std::endl;
 }
