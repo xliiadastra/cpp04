@@ -11,11 +11,12 @@ protected:
 
 public:
     WrongAnimal();
-    WrongAnimal(std::string type);
     WrongAnimal(const WrongAnimal& src);
     WrongAnimal&   operator=(const WrongAnimal& src);
     ~WrongAnimal();
-    void    makeSound(void);
+
+    void            makeSound(void) const;
+    std::string     getType() const;
 };
 
 #endif

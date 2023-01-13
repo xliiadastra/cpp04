@@ -1,5 +1,5 @@
-#ifndef WRONGCAT_HPP
-# define WRONGCAT_HPP
+#ifndef WRONGCat_HPP
+# define WRONGCat_HPP
 
 # include <iostream>
 # include <string>
@@ -7,10 +7,12 @@
 
 class WrongCat : public WrongAnimal
 {
-private:
-    std::string type;
-
 public:
+    WrongCat();
+    WrongCat(const WrongCat& src);
+    WrongCat&    operator=(const WrongCat& src);
+    ~WrongCat();
+    void    makeSound(void) const;
 };
 
 #endif
