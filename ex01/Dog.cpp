@@ -1,9 +1,11 @@
 #include "Dog.hpp"
+#include "Brain.hpp"
 
 Dog::Dog()
 {
     std::cout << "[Dog] constructor called." << std::endl;
     this->type = "Dog";
+    brain = new Brain();
 }
 
 Dog::Dog(const Dog& src)
@@ -22,9 +24,32 @@ Dog&    Dog::operator=(const Dog& src)
 Dog::~Dog()
 {
     std::cout << "[Dog] Destructor called." << std::endl;
+    delete this;
 }
 
 void    Dog::makeSound(void) const
 {
     std::cout << "bow-wow~" << std::endl;
+}
+
+Brain*  Dog::getBrain()
+{
+    return (brain);
+}
+
+void    Dog::setBrain(std::string idea, unsigned int n)
+{
+    if (n > 100)
+    {
+        std::cout << "Number of Ideas cannot be more than 100" << std::endl;
+        return ;
+    }
+    for (int i = 0; i < (int)n; i++)
+        brain->setIdeas(idea, i);
+
+}
+
+void    Dog::printBrain()
+{
+    
 }

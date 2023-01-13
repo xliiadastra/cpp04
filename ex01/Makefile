@@ -6,13 +6,13 @@ CFLAGS		= -Wall -Wextra -Werror -std=c++98
 RM		= rm
 RMFLAGS		= -f
 
-INCLUDE		= ./Animal.hpp ./Cat.hpp ./Dog.hpp ./WrongAnimal.hpp ./WrongCat.hpp ./brain.hpp
+INCLUDE		= ./Animal.hpp ./Cat.hpp ./Dog.hpp ./Brain.hpp
 
 SRCS 		= main.cpp \
 			  Animal.cpp \
 			  Cat.cpp	\
 			  Dog.cpp	\
-			  brain.cpp
+			  Brain.cpp
 
 OBJS		= $(SRCS:%.cpp=%.o)
 
