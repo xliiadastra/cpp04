@@ -4,24 +4,79 @@
 
 void check_leaks()
 {
-	system("leaks abstract");
+	system("leaks brain");
 }
 
 int main()
 {
 //	atexit(check_leaks);
-
-//	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
-
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound();
-	j->makeSound();
-
-	delete j;
+	delete j;//should not create a leak
 	delete i;
+
+	Animal* a[4];
+
+	std::cout << "-------------------------\nAnimal array create start\n" << std::endl;
+	for (int idx = 0; idx < 4; ++idx) {
+		if (idx < 2) {
+			a[idx] = new Dog();
+		}
+		else {
+			a[idx] = new Cat();
+		}
+	}
+	std::cout << "-------------------------\nAnimal array assign done\n" << std::endl;
+
+	for (int idx = 0; idx < 4; ++idx) {
+		a[idx]->makeSound();
+		delete a[idx];
+	}
+	std::cout << "-------------------------\nAnimal array delete done\n" << std::endl;
+
+	Dog b;
+	b.setBrain("Dog's IDEA", 10);
+	Dog c;
+	c = b;
+
+//	Dog c(b);
+
+	std::cout << &b << '\n' << &c << std::endl;
+	std::cout << b.getBrain() << std::endl;
+	std::cout << c.getBrain() << std::endl;
+	c.setBrain("New IDEA", 5);
+
+	b.printBrain();
+	c.printBrain();
 
 	return 0;
 }
+
+
+// #include "Animal.hpp"
+// #include "Dog.hpp"
+// #include "Cat.hpp"
+
+// void check_leaks()
+// {
+// 	system("leaks abstract");
+// }
+
+// int main()
+// {
+// //	atexit(check_leaks);
+
+// //	const Animal* meta = new Animal();
+// 	const Animal* j = new Dog();
+// 	const Animal* i = new Cat();
+
+// 	std::cout << j->getType() << " " << std::endl;
+// 	std::cout << i->getType() << " " << std::endl;
+// 	i->makeSound();
+// 	j->makeSound();
+
+// 	delete j;
+// 	delete i;
+
+// 	return 0;
+// }

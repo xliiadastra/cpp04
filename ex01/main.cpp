@@ -34,20 +34,20 @@ int main()
 	}
 	std::cout << "-------------------------\nAnimal array delete done\n" << std::endl;
 
-	Dog* b = new Dog();
-	b->setBrain("Dog's IDEA", 10);
-	Dog* c = new Dog(*b);
+	Dog b;
+	b.setBrain("Dog's IDEA", 10);
+	Dog c;
+	c = b;
 
-	std::cout << b << '\n' << c << std::endl;
-	std::cout << b->getBrain() << std::endl;
-	std::cout << c->getBrain() << std::endl;
-	c->setBrain("New IDEA", 5);
+//	Dog c(b);
 
-	b->printBrain();
-	c->printBrain();
+	std::cout << &b << '\n' << &c << std::endl;
+	std::cout << b.getBrain() << std::endl;
+	std::cout << c.getBrain() << std::endl;
+	c.setBrain("New IDEA", 5);
 
-	delete b;
-	delete c;
+	b.printBrain();
+	c.printBrain();
 
 	return 0;
 }
